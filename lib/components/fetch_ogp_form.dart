@@ -23,14 +23,19 @@ class _FetchOgpFormState extends State<FetchOgpForm> {
                 });
               },
             ),
-            RaisedButton(
+            RaisedButton.icon(
+              shape: StadiumBorder(),
+              icon: Icon(
+                Icons.file_download,
+                color: Colors.white,
+              ),
               onPressed: (_url == "")
                   ? null
                   : () {
                       print("Current url is $_url");
                       context.read<MetadataModel>().fetchOgpFrom(_url);
                     },
-              child: Text("Fetch"),
+              label: Text("Fetch"),
               color: Colors.blue,
               textColor: Colors.white,
             ),
