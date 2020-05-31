@@ -1,4 +1,6 @@
+import 'package:fetch_ogp/models/metadata_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FetchOgpForm extends StatefulWidget {
   @override
@@ -22,10 +24,12 @@ class _FetchOgpFormState extends State<FetchOgpForm> {
               },
             ),
             RaisedButton(
-              onPressed: () {
-                print("Current url is $_url");
-                // fetchMetadata(_url);
-              },
+              onPressed: (_url == "")
+                  ? null
+                  : () {
+                      print("Current url is $_url");
+                      context.read<MetadataModel>().fetchOgpFrom(_url);
+                    },
               child: Text("Fetch"),
               color: Colors.blue,
               textColor: Colors.white,
