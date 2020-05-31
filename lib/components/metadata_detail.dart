@@ -1,15 +1,19 @@
+import 'package:fetch_ogp/models/metadata_model.dart';
 import 'package:flutter/material.dart';
+import 'package:metadata_fetch/metadata_fetch.dart';
+import 'package:provider/provider.dart';
 
 class MetadataDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Metadata _ogp = context.select((MetadataModel _model) => _model.ogp);
+
     return Expanded(
         child: Column(
       children: <Widget>[
-        Text("Flutter - Beautiful native apps in record time"),
-        Image.network("https://flutter.dev/images/flutter-logo-sharing.png"),
-        Text(
-            "Flutter is Google's UI toolkit for crafting beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.  Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.")
+        Text(_ogp.title),
+        Image.network(_ogp.image),
+        Text(_ogp.description)
       ],
     ));
   }
