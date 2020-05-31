@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metadata_fetch/metadata_fetch.dart';
+import 'package:http/http.dart' as http;
 
 // テスト用。あとで消す。
 Map<String, dynamic> mockJson = {
@@ -11,5 +12,11 @@ Map<String, dynamic> mockJson = {
 
 class MetadataModel extends ChangeNotifier {
   Metadata ogp = Metadata.fromJson(mockJson);
-  // fetchOgpFrom(String url) {};
+
+  void fetchOgpFrom(String _url) async {
+    final response = await http.get(_url);
+    final document = responseToDocument(response);
+    ogp = MetadataParser.OpenGraph(document);
+    notifyListeners();
+  }
 }
