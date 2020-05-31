@@ -12,7 +12,7 @@ class MetadataDetail extends StatelessWidget {
     final Metadata _ogp = context.select((MetadataModel _model) => _model.ogp);
 
     return Expanded(
-        child: Column(
+        child: ListView(
       children: <Widget>[
         Text(
           _ogp.title ?? "No title",
