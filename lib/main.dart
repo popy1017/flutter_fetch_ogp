@@ -1,3 +1,5 @@
+import 'package:fetch_ogp/components/fetch_ogp_form.dart';
+import 'package:fetch_ogp/components/metadata_detail.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,30 +16,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MetaDataView(),
+      home: MetadataView(),
     );
   }
 }
 
-class MetaDataView extends StatelessWidget {
+class MetadataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("'Flutter OGP Demo'")),
-        body: Column(
-          children: <Widget>[
-            Expanded(
-                child: Column(
-              children: <Widget>[
-                Text("Flutter - Beautiful native apps in record time"),
-                Image.network(
-                    "https://flutter.dev/images/flutter-logo-sharing.png"),
-                Text(
-                    "Flutter is Google's UI toolkit for crafting beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.  Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.")
-              ],
-            )),
-            SizedBox(height: 100, child: Container(color: Colors.cyan)),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: <Widget>[MetadataDetail(), FetchOgpForm()],
+          ),
         ));
   }
 }
