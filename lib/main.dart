@@ -1,6 +1,8 @@
 import 'package:fetch_ogp/components/fetch_ogp_form.dart';
 import 'package:fetch_ogp/components/metadata_detail.dart';
+import 'package:fetch_ogp/models/metadata_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,8 +30,11 @@ class MetadataView extends StatelessWidget {
         appBar: AppBar(title: Text("'Flutter OGP Demo'")),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Column(
-            children: <Widget>[MetadataDetail(), FetchOgpForm()],
+          child: ChangeNotifierProvider(
+            create: (context) => MetadataModel(),
+            child: Column(
+              children: <Widget>[MetadataDetail(), FetchOgpForm()],
+            ),
           ),
         ));
   }
