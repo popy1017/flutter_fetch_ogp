@@ -11,7 +11,13 @@ class MetadataDetail extends StatelessWidget {
     return Expanded(
         child: Column(
       children: <Widget>[
-        Text(_ogp.title),
+        Text(
+          _ogp.title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+        ),
         Image.network(_ogp.image),
         Text(_ogp.description)
       ],
