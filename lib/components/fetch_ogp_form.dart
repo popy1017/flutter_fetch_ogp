@@ -17,6 +17,7 @@ class _FetchOgpFormState extends State<FetchOgpForm> {
         child: Column(
           children: <Widget>[
             TextField(
+              decoration: InputDecoration(hintText: "https://www.example.com"),
               onChanged: (text) {
                 setState(() {
                   _url = text;
