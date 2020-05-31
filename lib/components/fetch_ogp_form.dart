@@ -31,9 +31,19 @@ class _FetchOgpFormState extends State<FetchOgpForm> {
               ),
               onPressed: (_url == "")
                   ? null
-                  : () {
+                  : () async {
                       print("Current url is $_url");
-                      context.read<MetadataModel>().fetchOgpFrom(_url);
+                      final success = await context
+                          .read<MetadataModel>()
+                          .fetchOgpFrom(_url);
+
+                      if (!success) {
+                        final SnackBar _snackBar = SnackBar(
+                          content: Text("Error happened."),
+                          backgroundColor: Colors.red[300],
+                        );
+                        Scaffold.of(context).showSnackBar(_snackBar);
+                      }
                     },
               label: Text("Fetch"),
               color: Colors.blue,

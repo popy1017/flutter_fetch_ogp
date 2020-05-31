@@ -13,10 +13,17 @@ Map<String, dynamic> mockJson = {
 class MetadataModel extends ChangeNotifier {
   Metadata ogp = Metadata.fromJson(mockJson);
 
-  void fetchOgpFrom(String _url) async {
-    final response = await http.get(_url);
-    final document = responseToDocument(response);
-    ogp = MetadataParser.OpenGraph(document);
-    notifyListeners();
+  Future<bool> fetchOgpFrom(String _url) async {
+    try {
+      final response = await http.get(_url);
+      final document = responseToDocument(response);
+      ogp = MetadataParser.OpenGraph(document);
+
+      notifyListeners();
+      return true;
+    } catch (e) {
+      print(e.message ?? e);
+      return false;
+    }
   }
 }
