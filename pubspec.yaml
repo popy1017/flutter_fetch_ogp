@@ -27,6 +27,7 @@ dependencies:
   provider: ^4.1.2
 
   metadata_fetch: ^0.3.1
+  receive_sharing_intent: ^1.4.0+2
 
   http: ^0.12.1
 
