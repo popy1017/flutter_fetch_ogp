@@ -28,12 +28,17 @@ class MetadataView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Flutter OGP Demo")),
-        body: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: ChangeNotifierProvider(
-            create: (context) => MetadataModel(),
-            child: Column(
-              children: <Widget>[MetadataDetail(), FetchOgpForm()],
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: ChangeNotifierProvider(
+              create: (context) => MetadataModel(),
+              child: Column(
+                children: <Widget>[MetadataDetail(), FetchOgpForm()],
+              ),
             ),
           ),
         ));
