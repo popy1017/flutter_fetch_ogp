@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:metadata_fetch/metadata_fetch.dart';
 import 'package:http/http.dart' as http;
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
-// テスト用。あとで消す。
+// 初期表示用
 Map<String, dynamic> mockJson = {
   "title": "Flutter - Beautiful native apps in record time",
   "image": "https://flutter.dev/images/flutter-logo-sharing.png",
@@ -22,9 +23,8 @@ class MetadataModel extends ChangeNotifier {
     // アプリ起動中の処理
     _intentDataStreamSubscription =
         ReceiveSharingIntent.getTextStream().listen((String value) {
-      final json = jsonDecode(value);
-      if (json["url"] != null) {
-        fetchOgpFrom(json["url"]);
+      if (value != null) {
+        fetchOgpByPlatform(value);
       }
     }, onError: (err) {
       print("getLinkStream error: $err");
@@ -33,10 +33,7 @@ class MetadataModel extends ChangeNotifier {
     // For sharing or opening urls/text coming from outside the app while the app is closed
     ReceiveSharingIntent.getInitialText().then((String value) {
       if (value != null) {
-        final json = jsonDecode(value);
-        if (json["url"] != null) {
-          fetchOgpFrom(json["url"]);
-        }
+        fetchOgpByPlatform(value);
       }
     });
   }
@@ -45,6 +42,19 @@ class MetadataModel extends ChangeNotifier {
   void dispose() {
     _intentDataStreamSubscription.cancel();
     super.dispose();
+  }
+
+  void fetchOgpByPlatform(String value) {
+    if (Platform.isIOS) {
+      // iOSの場合、JSON文字列で送られてくるので、JSONに変換する
+      final json = jsonDecode(value);
+      if (json["url"] != null) {
+        fetchOgpFrom(json["url"]);
+      }
+    } else if (Platform.isAndroid) {
+      // Androidの場合、普通の文字列で送られてくるのでそのまま使う
+      fetchOgpFrom(value);
+    }
   }
 
   Future<bool> fetchOgpFrom(String _url) async {
