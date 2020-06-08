@@ -500,6 +500,7 @@
 		6D9AA0CE248C8D5200B6235F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -508,6 +509,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareUrlAndMessage/ShareUrlAndMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K662V9W9P7;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				HOST_APP_BUNDLE_ID = com.popy1017.shareExtensionSample;
 				INFOPLIST_FILE = ShareUrlAndMessage/Info.plist;
@@ -532,6 +534,7 @@
 		6D9AA0CF248C8D5200B6235F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -540,6 +543,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareUrlAndMessage/ShareUrlAndMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K662V9W9P7;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				HOST_APP_BUNDLE_ID = com.popy1017.shareExtensionSample;
 				INFOPLIST_FILE = ShareUrlAndMessage/Info.plist;
@@ -561,6 +565,7 @@
 		6D9AA0D0248C8D5200B6235F /* Profile */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -569,6 +574,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareUrlAndMessage/ShareUrlAndMessage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K662V9W9P7;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				HOST_APP_BUNDLE_ID = com.popy1017.shareExtensionSample;
 				INFOPLIST_FILE = ShareUrlAndMessage/Info.plist;
